@@ -15,8 +15,11 @@ namespace DefaultNamespace
 
         [SerializeField] private Transform pigeonParent;
 
-        [SerializeField] private bool isReady = true;
-        [SerializeField] private float _cdSpawn;
+        public bool isReady = false;
+        public float cdSpawn=1;
+
+        public bool stopAll = false;
+
         
         void Start()
         {
@@ -28,10 +31,18 @@ namespace DefaultNamespace
 
         void Update()
         {
-            if (isReady)
+            if (!stopAll)
             {
-                StartCoroutine(SpawnPigeon(_cdSpawn));
+                if (isReady)
+                {
+                    StartCoroutine(SpawnPigeon(cdSpawn));
+                }
             }
+            else
+            {
+                Debug.Log("STOP ALL");
+            }
+            
             
         }
 

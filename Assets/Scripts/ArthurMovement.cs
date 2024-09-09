@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DefaultNamespace;
@@ -14,6 +15,8 @@ public class ArthurMovement : MonoBehaviour
 
     private GameObject pigeon;
 
+    public int madness = 3;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,13 +27,7 @@ public class ArthurMovement : MonoBehaviour
     void Update()
     {
         CheckPigeonDistance();
-
-        // if (pigeon == null)
-        // {
-        //     animator.SetBool("isNear", false);
-        //     animator.SetBool("isTooNear", false);
-        //     animator.SetBool("canJump", false);
-        // }
+        
     }
 
     void CheckPigeonDistance()
@@ -67,7 +64,6 @@ public class ArthurMovement : MonoBehaviour
     // Método para actualizar las animaciones según la distancia
     void UpdateAnimations(float distanceToPigeon)
     {
-        Debug.Log(distanceToPigeon);
         if (distanceToPigeon < radiusNear && distanceToPigeon >= radiusTooNear)
         {
             SetAnimatorBools(true, false); // `isNear == true`, `isTooNear == false`, `canJump == false`
@@ -76,18 +72,12 @@ public class ArthurMovement : MonoBehaviour
         {
             SetAnimatorBools(false, true); // `isNear == false`, `isTooNear == true`, `canJump == false`
         }
-        // else if (distanceToPigeon < radiusJump)
-        // {
-        //     SetAnimatorBools(false, false); // `isNear == false`, `isTooNear == false`, `canJump == true`
-        // }
         else if (distanceToPigeon > radiusNear)
         {
             SetAnimatorBools(false, false); // Vuelve al estado `Sleeping`
         }
     }
-
-
-    // Método para mover a Arthur hacia la paloma si está dentro del rango "TooNear"
+    
     void MoveToPigeon(float distanceToPigeon)
     {
         if (distanceToPigeon <= radiusTooNear)
@@ -121,5 +111,13 @@ public class ArthurMovement : MonoBehaviour
     {
         Vector2 direction = ((Vector2)go.transform.position - (Vector2)gameObject.transform.position).normalized;
         return direction;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Pigeon"))
+        {
+            madness--;
+        }
     }
 }
