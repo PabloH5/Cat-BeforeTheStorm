@@ -54,5 +54,10 @@ public class PigeonMovement : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+        if (other.CompareTag("Arthur"))
+        {
+            Destroy(this.gameObject);
+        }
     }
 }
