@@ -5,15 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fce60881-e336-43be-b1bf-4ee7661bcc44" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Pigeon.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Pigeon.cs.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Cat-BeforeTheStorm/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Cat-BeforeTheStorm/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/GAMEPLAY.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GAMEPLAY.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Player/Looking.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Player/Looking.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Player/Running.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Player/Running.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Player/Sleep.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Player/Sleep.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/Player/Stading.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Sprites/Player/Stading.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/World/Basic_tools_and_meterials.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Sprites/World/Basic_tools_and_meterials.png.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptable Objects/PigeonSO.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptable Objects/PigeonSO.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Pigeon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Pigeon.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PigeonSo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PigeonSo.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -97,7 +93,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1725837130216</updated>
-      <workItem from="1725837131158" duration="3144000" />
+      <workItem from="1725837131158" duration="5836000" />
     </task>
     <servers />
   </component>

@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: PigeonSO
   m_EditorClassIdentifier: 
   _pigeons:
-  - _prefab: {fileID: 0}
-    _speed: 0
-  - _prefab: {fileID: 0}
-    _speed: 0
-  - _prefab: {fileID: 0}
-    _speed: 0
-  - _prefab: {fileID: 0}
-    _speed: 0
+  - _prefab: {fileID: 2693827269943083757, guid: 03a1a1e47f5796c4c8e63b64e91fcca9, type: 3}
+    _speed: 1
+  - _prefab: {fileID: 3922108875013318182, guid: 2faa695242401f240a20cea586d2f536, type: 3}
+    _speed: 2
+  - _prefab: {fileID: 3789255684191723918, guid: d0b1255e791919249a2cf120a689ca80, type: 3}
+    _speed: 1.2
+  - _prefab: {fileID: 211270136364649727, guid: ce27cecdc24ee0545b19db6b10ca935d, type: 3}
+    _speed: 2.4

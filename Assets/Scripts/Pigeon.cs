@@ -4,7 +4,7 @@ namespace DefaultNamespace
     [System.Serializable]
     public class Pigeon
     {
-        [SerializeField]private GameObject _prefab;
-        [SerializeField] private float _speed;
+        public GameObject _prefab;
+        public float _speed;
     }
 }

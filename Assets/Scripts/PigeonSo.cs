@@ -7,6 +7,6 @@ namespace DefaultNamespace
    [CreateAssetMenu(fileName = "PigeonSO")]
    public class PigeonSo : ScriptableObject
    {
-      [SerializeField] private List<Pigeon> _pigeons = new List<Pigeon>();
+      public List<Pigeon> _pigeons = new List<Pigeon>();
    }
 }
