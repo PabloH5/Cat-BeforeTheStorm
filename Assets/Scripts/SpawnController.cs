@@ -15,25 +15,33 @@ namespace DefaultNamespace
 
         [SerializeField] private Transform pigeonParent;
 
-        [SerializeField] private bool isReady = false;
+        [SerializeField] private bool isReady = true;
+        [SerializeField] private float _cdSpawn;
         
         void Start()
         {
-            
+            foreach (var pigeonList in _pigeonSo._pigeons)
+            {
+                pigeonList._prefab.GetComponent<PigeonMovement>().speed = pigeonList._speed;
+            }
         }
 
         void Update()
         {
-            GenerateNewPigeons();
-        }
-
-        private void GenerateNewPigeons()
-        {
             if (isReady)
             {
-                GetRandomPigeon(Random.Range(0,_pigeonSo._pigeons.Count));
-                isReady = false;
+                StartCoroutine(SpawnPigeon(_cdSpawn));
             }
+            
+        }
+
+        private IEnumerator SpawnPigeon(float time)
+        {
+            isReady = false;
+            GetRandomPigeon(Random.Range(0,_pigeonSo._pigeons.Count));
+            yield return new WaitForSeconds(time);
+            isReady = true;
+            
         }
         private void GetRandomPigeon(int num)
         {

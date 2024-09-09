@@ -1,30 +1,20 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PigeonMovement : MonoBehaviour
 {
-    [SerializeField] private float speed;
+    public float speed;
     private Vector2 direction;
     
     public float mouseSpeed = 7f; //  speed for move away of the mouse
     public float radius = 2f; //minimal distance for move away of the mouse
-    
-    public float verticalSpeed = 0.5f; // speed vertical movement
-    public float amplitude = 0.5f; // amplitude of the vertical movement
 
-    private Vector2 startPosition;
-    private float timeCounter = 0f;
-    
-    public float Speed
-    {
-        get;
-        set;
-    }
     
     void Start()
     {
-        startPosition = transform.position;
         //depending on the site where spawn change the direction 
         if (transform.position.x < 0) 
         {
@@ -48,15 +38,21 @@ public class PigeonMovement : MonoBehaviour
         
         if (distanceToMouse < radius)
         {
-            
             Vector2 fleeDirection = (pigeonPosition - (Vector2)mousePosition).normalized;
             transform.Translate(fleeDirection * (mouseSpeed * Time.deltaTime));
         }
         else
         {
-            
             transform.Translate(direction * (speed * Time.deltaTime));
         }
         
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Limits"))
+        {
+            Destroy(this.gameObject);
+        }
     }
 }
