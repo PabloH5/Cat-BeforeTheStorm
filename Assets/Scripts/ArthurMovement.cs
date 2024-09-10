@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DefaultNamespace;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class ArthurMovement : MonoBehaviour
 {
@@ -12,21 +13,31 @@ public class ArthurMovement : MonoBehaviour
     [SerializeField] private float radiusNear;
     [SerializeField] private float radiusTooNear;
     [SerializeField] private float radiusJump;
+    
+    [Header("Madness Variables")]
+    
+    public int madness = 4;
+    [SerializeField] private float madnessSpeed = 10f;
+    [SerializeField] private float rotationSpeed = 200f;
+    private bool isMad = false;
 
     private GameObject pigeon;
-
-    public int madness = 3;
-
-    // Start is called before the first frame update
+    
     void Start()
     {
         animator = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        CheckPigeonDistance();
+        if (madness > 0)
+        {
+            CheckPigeonDistance();
+        }
+        else
+        {
+            GoCrazy();
+        }
         
     }
 
@@ -49,35 +60,33 @@ public class ArthurMovement : MonoBehaviour
         }
     }
 
-    // Método para encontrar la paloma
     GameObject FindPigeon()
     {
         return FindObjectOfType<PigeonMovement>()?.gameObject;
     }
 
-    // Método para calcular la distancia a la paloma
     float CalculateDistance()
     {
         return Vector3.Distance(transform.position, pigeon.transform.position);
     }
-
-    // Método para actualizar las animaciones según la distancia
+    
+    //Update the animations deppending of the distance btw the cat and pigeon
     void UpdateAnimations(float distanceToPigeon)
     {
         if (distanceToPigeon < radiusNear && distanceToPigeon >= radiusTooNear)
         {
-            SetAnimatorBools(true, false); // `isNear == true`, `isTooNear == false`, `canJump == false`
+            SetAnimatorBools(true, false);
         }
         else if (distanceToPigeon < radiusTooNear)
         {
-            SetAnimatorBools(false, true); // `isNear == false`, `isTooNear == true`, `canJump == false`
+            SetAnimatorBools(false, true); 
         }
         else if (distanceToPigeon > radiusNear)
         {
-            SetAnimatorBools(false, false); // Vuelve al estado `Sleeping`
+            SetAnimatorBools(false, false); 
         }
     }
-    
+    //Move the cat to random pigeon
     void MoveToPigeon(float distanceToPigeon)
     {
         if (distanceToPigeon <= radiusTooNear)
@@ -98,19 +107,41 @@ public class ArthurMovement : MonoBehaviour
         }
     }
 
-    // Método para actualizar los booleanos del Animator
     void SetAnimatorBools(bool isNear, bool isTooNear)
     {
         animator.SetBool("isNear", isNear);
         animator.SetBool("isTooNear", isTooNear);
-        // animator.SetBool("canJump", canJump);
     }
 
-    // Método para calcular la dirección hacia la paloma
     private Vector2 CalculateDirection(GameObject go)
     {
         Vector2 direction = ((Vector2)go.transform.position - (Vector2)gameObject.transform.position).normalized;
         return direction;
+    }
+    
+    void GoCrazy()
+    {
+        SetAnimatorBools(false, false);
+        isMad = true;
+    
+        Vector3 randomDirection = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0).normalized;
+        Vector3 newPosition = transform.position + randomDirection * (madnessSpeed * Time.deltaTime);
+
+        Vector3 clampedPosition = ClampToScreen(newPosition);
+        transform.position = clampedPosition;
+
+        transform.Rotate(Vector3.forward, rotationSpeed * Time.deltaTime);
+    }
+
+    Vector3 ClampToScreen(Vector3 targetPosition)
+    {
+        Vector3 screenMin = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0)); 
+        Vector3 screenMax = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, 0)); 
+
+        float clampedX = Mathf.Clamp(targetPosition.x, screenMin.x, screenMax.x);
+        float clampedY = Mathf.Clamp(targetPosition.y, screenMin.y, screenMax.y);
+
+        return new Vector3(clampedX, clampedY, targetPosition.z);
     }
 
     private void OnTriggerEnter2D(Collider2D other)

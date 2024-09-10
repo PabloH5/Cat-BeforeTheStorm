@@ -7,6 +7,8 @@ using UnityEngine.Serialization;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private Camera _camera;
+    [Header("Controllers")]
     [SerializeField]private ArthurMovement _arthur;
     [SerializeField]private SceneController _sceneController;
     [SerializeField]private SpawnController _spawnController;
@@ -21,10 +23,18 @@ public class GameManager : MonoBehaviour
         Loose=4
     }
 
+    [Header("Madness Icons")]
+    [SerializeField] private GameObject madnesSkull1;
+    [SerializeField] private GameObject madnesSkull2;
+    [SerializeField] private GameObject madnesSkull3;
+
+    
     [Header("Feedbacks interfaces")]
     [SerializeField] private GameObject nextLevelFeedback;
     [SerializeField] private GameObject looseFeedback;
     [SerializeField] private GameObject winFeedback;
+
+    [SerializeField] private GameObject settings;
     
     
     [Header("Level Variables")]
@@ -35,6 +45,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         SetUpLevel();
+        Time.timeScale = 1;
     }
 
     private void SetUpLevel()
@@ -64,12 +75,14 @@ public class GameManager : MonoBehaviour
             case CurrentLevel.Win:
                 KillPigeons();
                 winFeedback.SetActive(true);
+                settings.SetActive(true);
                 _spawnController.stopAll = true;
                 break;
 
             case CurrentLevel.Loose:
                 KillPigeons();
                 looseFeedback.SetActive(true);
+                settings.SetActive(true);
                 _spawnController.stopAll = true;
                 break;
         }
@@ -78,9 +91,31 @@ public class GameManager : MonoBehaviour
     void FixedUpdate()
     {
         Nextlevel();
+        UpdateSkulls();
         if (_arthur==null)
         {
             Debug.Log("Je murio e gato");
+        }
+    }
+    
+    void UpdateSkulls()
+    {
+        if (_arthur.madness == 2)
+        {
+            madnesSkull1.SetActive(true);
+        }
+        else if (_arthur.madness == 1)
+        {
+            madnesSkull1.SetActive(true);
+            madnesSkull2.SetActive(true);
+        }
+        else if (_arthur.madness == 0)
+        {
+            madnesSkull1.SetActive(true);
+            madnesSkull2.SetActive(true);
+            madnesSkull3.SetActive(true);
+            Animator animatorCam = _camera.GetComponent<Animator>();
+            animatorCam.SetBool("isCrazy", true);
         }
     }
 
@@ -108,7 +143,6 @@ public class GameManager : MonoBehaviour
             currentLevel = CurrentLevel.Loose;
             SetUpLevel();
             _spawnController.isReady = false;
-            // Destroy(_arthur.gameObject);
         }
     }
 
@@ -131,5 +165,18 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(2.5f);
         obj.SetActive(false);
         _spawnController.stopAll=false;
+    }
+    
+    public void PauseButton()
+    {
+        settings.SetActive(true);
+        Time.timeScale = 0;
+    }
+
+    public void ResumeGame ()
+    {
+        settings.SetActive(false);
+        Time.timeScale = 1;
+        
     }
 }

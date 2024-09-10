@@ -38,12 +38,6 @@ namespace DefaultNamespace
                     StartCoroutine(SpawnPigeon(cdSpawn));
                 }
             }
-            else
-            {
-                Debug.Log("STOP ALL");
-            }
-            
-            
         }
 
         private IEnumerator SpawnPigeon(float time)
