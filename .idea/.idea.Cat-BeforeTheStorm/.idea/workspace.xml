@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fce60881-e336-43be-b1bf-4ee7661bcc44" name="Changes" comment="" />
+    <list default="true" id="fce60881-e336-43be-b1bf-4ee7661bcc44" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Canvas.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Canvas.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MENU.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MENU.unity" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -90,6 +94,7 @@
       <workItem from="1725887539397" duration="12550000" />
       <workItem from="1725915218772" duration="7648000" />
       <workItem from="1725924756693" duration="6290000" />
+      <workItem from="1726018651967" duration="676000" />
     </task>
     <servers />
   </component>
