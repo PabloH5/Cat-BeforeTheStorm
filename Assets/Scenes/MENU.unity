@@ -1683,7 +1683,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: "* CAT: https://pop-shop-packs.itch.io/cats-pixel-asset-pack\n\n*PIGEONS:https://pop-shop-packs.itch.io/pigeons-2d-pixel-asset-pack\n\n*
     WORLD: https://cupnooble.itch.io/sprout-lands-asset-pack\n\n* UI: https://cupnooble.itch.io/sprout-lands-ui-pack\n\n*
-    Music & sounds: \thttps://downloads.khinsider.com/game-soundtracks/album/pokemon-emerald-enhanced-soundtrack"
+    Music & sounds: \thttps://pixabay.com/es/sound-effects/shari-meow-47485/\nhttps://youtu.be/l7SwiFWOQqM?si=6AhOpvSPHF9x1ral\n"
 --- !u!222 &895664876
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1799,7 +1799,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: c6c1a58925fb0d94baa2ffc0ddfcbc7f, type: 3}
+  m_audioClip: {fileID: 8300000, guid: f53c2086f38d3d14da36cefb30ab885c, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.2
   m_Pitch: 1
