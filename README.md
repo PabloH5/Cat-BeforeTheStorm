@@ -1,4 +1,4 @@
-#Cat-Before the Storm
+# Cat-Before the Storm
 
 This game was created for the Brackeys Game Jam 2024.2 on Itch.io. You can playit [here :3](https://pablitoh5.itch.io/cat-before-the-storm)
  
